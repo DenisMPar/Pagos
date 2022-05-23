@@ -15,6 +15,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       await myOrder.pull();
       myOrder.data.status = "closed";
       await myOrder.push();
+      console.log("compra exitosa");
+
       //send email "tu compra fue exitosa"
       //email interno "alguien realizo una compra"
     }
