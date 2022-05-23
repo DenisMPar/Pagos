@@ -5,6 +5,7 @@ mercadopago.configure({
   access_token: process.env.MP_TOKEN,
 });
 
+//Busca una merchant order en Mp
 export async function getMerchantOrder(id) {
   const res = await mercadopago.merchant_orders.get(id);
   return res.response;
@@ -31,8 +32,7 @@ export async function generatePreference(productData, orderId) {
       pending: "https://apx.school/pending",
     },
     external_reference: orderId,
-    notification_url:
-      "https://webhook.site/109da4a4-aa25-4df9-8d96-d773b23b928c",
+    notification_url: "https://pagos-rouge.vercel.app/api/webhooks/mercadopago",
   };
 
   const res = await mercadopago.preferences.create(preferenceData);
